@@ -15,7 +15,8 @@ class NewVisitorTest(unittest.TestCase):
         # Joaquin has heard about a cool new online vending machine app. he goes
         # to check out its homepage
         self.driver.get('http://127.0.0.1:8000/')
-        assert 'Vending Machine' in self.driver.title, "Browser title was " + self.driver.title
+        assert 'Vending Machine' in self.driver.title,\
+            "Browser title was " + self.driver.title
 
 
 if __name__ == '__main__':
