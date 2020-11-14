@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="64d11620-15ac-46fe-a614-3f08dce0cd3e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vending_machine/machines/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/vending_machine/machines/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vending_machine/vending_machine/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/vending_machine/vending_machine/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,5 +76,9 @@
       <screen x="1366" y="-310" width="1920" height="1040" />
     </state>
     <state x="2515" y="-192" key="#functional_test/0.0.1366.728/1366.-310.1920.1040@1366.-310.1920.1040" timestamp="1605312067717" />
+    <state x="2513" y="-54" width="585" height="534" key="find.popup" timestamp="1605314086277">
+      <screen x="1366" y="-310" width="1920" height="1040" />
+    </state>
+    <state x="2513" y="-54" width="585" height="534" key="find.popup/0.0.1366.728/1366.-310.1920.1040@1366.-310.1920.1040" timestamp="1605314086277" />
   </component>
 </project>
