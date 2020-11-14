@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64d11620-15ac-46fe-a614-3f08dce0cd3e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/file" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/machines/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/machines/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/machines/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/machines/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/machines/migrations/0002_vendingmachine_coins.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/machines/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/machines/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/machines/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vending_machine/machines/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vending-machine-.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vending-machine-.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functional_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/functional_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vending_machine/vending_machine/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/vending_machine/vending_machine/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vending_machine/vending_machine/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/vending_machine/vending_machine/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +47,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/vending_machine/machines/tests.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.Run Server">
+  <component name="RunManager" selected="Python tests.Unittests in tests.py">
     <configuration name="Run Server" type="PythonConfigurationType" factoryName="Python">
       <module name="vending-machine-" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -90,8 +106,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.functional_test" />
       <item itemvalue="Python.Run Server" />
+      <item itemvalue="Python.functional_test" />
       <item itemvalue="Python tests.Unittests in tests.py" />
     </list>
   </component>
@@ -113,6 +129,10 @@
       <screen x="1366" y="-310" width="1920" height="1040" />
     </state>
     <state x="1630" y="-16" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.-310.1920.1040@1366.-310.1920.1040" timestamp="1605318605161" />
+    <state x="2582" y="15" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605322349915">
+      <screen x="1366" y="-310" width="1920" height="1040" />
+    </state>
+    <state x="2582" y="15" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728/1366.-310.1920.1040@1366.-310.1920.1040" timestamp="1605322349915" />
     <state x="2515" y="-192" key="#functional_test" timestamp="1605312067717">
       <screen x="1366" y="-310" width="1920" height="1040" />
     </state>
