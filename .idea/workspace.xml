@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64d11620-15ac-46fe-a614-3f08dce0cd3e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/vending_machine/machines/api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vending_machine/machines/api_urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vending_machine/machines/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/vending_machine/machines/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vending_machine/machines/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/vending_machine/machines/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vending_machine/machines/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/vending_machine/machines/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vending_machine/machines/tests/test_api.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vending_machine/machines/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/vending_machine/machines/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vending_machine/vending_machine/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/vending_machine/vending_machine/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +176,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/vending_machine/machines/api.py</url>
-          <line>7</line>
+          <line>12</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
