@@ -41,14 +41,11 @@ class VendingMachineAPITest(TestCase):
         self.assertEqual(response['content-type'], 'application/json')
 
     def test_put_one_coin(self):
-        self.client.put('/')
-        self.assertEqual(Machine.objects.count(), 1)
-        new_machine = Machine.objects.first()
-        self.assertEqual(new_machine.coins, 1)
+        response = self.client.put('/')
+        self.assertEqual(response['X-Coins'], '1')
+
 
     def test_put_twice(self):
         self.client.put('/')
-        self.client.put('/')
-        self.assertEqual(Machine.objects.count(), 1)
-        new_machine = Machine.objects.first()
-        self.assertEqual(new_machine.coins, 2)
+        response = self.client.put('/')
+        self.assertEqual(response['X-Coins'], '2')
