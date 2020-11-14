@@ -9,7 +9,7 @@ for the entire human population.
 
 
 ## How It Works
-The behavior  defined by a simple contract that you can check:
+The behavior is defined by a simple contract that you can check:
 
 1) Insert a coin in the vending machine, returning the amount of accepted coins.
 2) Get all the coins back from the vending machine
@@ -27,7 +27,7 @@ inventory
 
 ## Usage
 
-| verb   | URL            | REQUEST BODY | RESPONSE CODE | RESPONSE HEADERS                                     | RESPONSE BODY         | STATUS      |
+| VERB   | URL            | REQUEST BODY | RESPONSE CODE | RESPONSE HEADERS                                     | RESPONSE BODY         | STATUS      |
 |--------|----------------|--------------|---------------|------------------------------------------------------|-----------------------|-------------|
 | PUT    | /              | {'coin':1}   | 204           | X-Coins: $accepted                                   |                       | In progress |
 | DELETE | /              |              | 204           | X-Coins : $returned                                  |                       | In progress |
@@ -69,12 +69,20 @@ Aside from Python, you’ll need:
     ```
 3. Activating and Deactivating your Virtualenv
     Is active if you see: 
-    ```(vendingmachine) $ ```
+    ```sh
+        (vendingmachine) $ 
+    ```
     if is not, activate it by: 
-    ``` workon vendingmachine ```
+    ``` sh
+     $  workon vendingmachine 
+    ```
     to disable it just:
-    ``` (vendingmachine) $ deactivate ```
+    ```sh
+     (vendingmachine) $ deactivate 
+    ```
 4. Install requirements
-        ```(vendingmachine) $ pip install -r requirements.txt ```
+        ```sh
+            (vendingmachine) $ pip install -r requirements.txt 
+         ```
     
 ### Deployment
