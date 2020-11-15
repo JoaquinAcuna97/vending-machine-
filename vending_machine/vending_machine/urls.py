@@ -18,7 +18,8 @@ from django.urls import path, include
 from machines import views, api
 urlpatterns = [
     path('',  api.home, name='home'),
-    path('inventory',  api.inventory, name='inventory'),
     path('refill', api.refill, name='refill'),
+    path('inventory', api.general_inventory, name='general_inventory'),
+    path('inventory/<int:id>', api.inventory, name='inventory'),
     path('admin/', admin.site.urls),
 ]

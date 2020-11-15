@@ -32,7 +32,7 @@ def home(request):
         return response
 
 
-def inventory(request):
+def general_inventory(request):
     if request.method == 'GET':
         item_dicts = {}
         machine = Machine.objects.first()
@@ -48,6 +48,26 @@ def inventory(request):
                                 content_type='application/json'
                                 )
         return response
+    response = HttpResponse(status=404)
+    return response
+
+
+def inventory(request, id=None):
+    if request.method == 'GET' and id is not None:
+        machine = Machine.objects.first()
+        if machine is not None:
+            item = machine.beverageitem_set.get(id=id)
+            if item is not None:
+                item_dicts = {
+                     'name': item.name,
+                     'quantity': item.quantity}
+                response = HttpResponse(json.dumps(item_dicts),
+                                        status=200,
+                                        content_type='application/json'
+                                        )
+                return response
+    response = HttpResponse(status=404)
+    return response
 
 
 def refill(request):
@@ -58,3 +78,5 @@ def refill(request):
                                 content_type='application/json'
                                 )
         return response
+    response = HttpResponse(status=404)
+    return response

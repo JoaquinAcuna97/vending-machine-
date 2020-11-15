@@ -56,7 +56,7 @@ class TestGETInventoryCertainItem(TestCase):
         response = self.client.get('/inventory/2')
         self.assertEqual(response.status_code, 404)
 
-    def test_get_inventory_product_not_created(self):
+    def test_get_inventory_product_created(self):
         self.client.post('/refill')
         response = self.client.get('/inventory/2')
         self.assertEqual(response.status_code, 200)
