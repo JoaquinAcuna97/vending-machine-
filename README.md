@@ -7,15 +7,17 @@
 API Vending Machine looks to use a functional tested beverage vending machine
 for the entire human population.
 
-Its fully developed in Python
-<p align="center">
+
+<p align="left">
+     Its fully developed in Python
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1200px-Python.svg.png" align="right"
-     alt="Among us Vending Machine" width="120" height="178">
+     alt="python logo" width="50" height="50">
 </p> 
-Using Django web framework used for rapid development
-<p align="center">
+
+<p align="left">
+     Using Django web framework used for rapid development
 <img src="https://cosasdedevs.com/media/sections/images/django_rh1DU90.png" align="right"
-     alt="Among us Vending Machine" width="120" height="178">
+     alt="django logo" width="50" height="50">
 </p>
 
 ## How It Works
