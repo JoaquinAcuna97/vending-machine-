@@ -1,4 +1,5 @@
 from django.test import TestCase
+import json
 
 
 class VendingMachineAPITestPUT(TestCase):
@@ -46,3 +47,47 @@ class VendingMachineAPITestDELETE(TestCase):
         self.client.put('/')
         response = self.client.delete('/')
         self.assertEqual(response['X-Coins'], '3')
+
+
+class VendingMachineAPITestGETInventory(TestCase):
+
+    def test_get_empty_inventory(self):
+        response = self.client.get('/inventory')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['content-type'], 'application/json')
+        self.assertEqual(
+            json.loads(response.content.decode('utf8')),
+            {}
+        )
+
+    def test_get_full_inventory(self):
+        self.client.get('/refill')
+        response = self.client.get('/inventory')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['content-type'], 'application/json')
+        self.assertEqual(
+            json.loads(response.content.decode('utf8')),
+            {[
+                {
+                    "pk": 1,
+                    "fields": {
+                        "name": "Beer",
+                        "vending_machine": 1
+                    }
+                },
+                {
+                    "pk": 2,
+                    "fields": {
+                        "name": "Lemonade",
+                        "vending_machine": 1
+                    }
+                },
+                {
+                    "pk": 3,
+                    "fields": {
+                        "name": "Coffee",
+                        "vending_machine": 1
+                    }
+                }
+            ]}
+        )

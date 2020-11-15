@@ -6,7 +6,7 @@
     }
   },
   {
-    "model": "myapp.BeverageItem",
+    "model": "machines.BeverageItem",
     "pk": 1,
     "fields": {
       "name": "Beer",
@@ -14,7 +14,7 @@
     }
   },
    {
-    "model": "myapp.BeverageItem",
+    "model": "machines.BeverageItem",
     "pk": 2,
     "fields": {
       "name": "Lemonade",
@@ -22,7 +22,7 @@
     }
   },
    {
-    "model": "myapp.BeverageItem",
+    "model": "machines.BeverageItem",
     "pk": 3,
     "fields": {
       "name": "Coffee",

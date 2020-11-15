@@ -86,3 +86,5 @@ Aside from Python, you’ll need:
          ```
     
 ### Deployment
+
+manage.py loaddata 
