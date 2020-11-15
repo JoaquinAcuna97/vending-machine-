@@ -1,11 +1,10 @@
 from django.urls import resolve
 from django.test import TestCase
 from machines.api import home
-from machines.models import VendingMachine as Machine
-import json
 
 
-class HomePageTest(TestCase):
+
+class TestHomePage(TestCase):
 
     def test_root_url_resolves_to_home_page_view(self):
         found = resolve('/')

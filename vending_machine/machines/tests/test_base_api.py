@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-class VendingMachineAPITestPUT(TestCase):
+class TestPUTBase(TestCase):
 
     def test_put_204_and_json_content(self):
         response = self.client.put('/')
@@ -17,7 +17,7 @@ class VendingMachineAPITestPUT(TestCase):
         self.assertEqual(response['X-Coins'], '2')
 
 
-class VendingMachineAPITestDELETE(TestCase):
+class TestDELETEBase(TestCase):
 
     def test_delete_returns_json_204(self):
         response = self.client.delete('/')
