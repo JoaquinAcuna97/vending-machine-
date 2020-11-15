@@ -6,6 +6,7 @@ import json
 def add_one_coin():
     return Machine.objects.add_one_coin()
 
+
 def delete_coins():
     return Machine.objects.delete_coins()
 
@@ -22,7 +23,7 @@ def home(request):
         response['X-Coins'] = machine.coins
         return response
 
-    if request.method=='DELETE':
+    if request.method == 'DELETE':
         coins_returned = delete_coins()
         response = HttpResponse(status=204,
                                 content_type='application/json'
@@ -31,4 +32,51 @@ def home(request):
         return response
 
 
+def general_inventory(request):
+    if request.method == 'GET':
+        item_dicts = {}
+        machine = Machine.objects.first()
+        if machine is not None:
+            item_dicts = [
+                {'id': item.id,
+                 'name': item.name,
+                 'quantity': item.quantity}
+                for item in machine.beverageitem_set.all()
+            ]
+        response = HttpResponse(json.dumps(item_dicts),
+                                status=200,
+                                content_type='application/json'
+                                )
+        return response
+    response = HttpResponse(status=404)
+    return response
 
+
+def inventory(request, id=None):
+    if request.method == 'GET' and id is not None:
+        machine = Machine.objects.first()
+        if machine is not None:
+            item = machine.beverageitem_set.get(id=id)
+            if item is not None:
+                item_dicts = {
+                     'name': item.name,
+                     'quantity': item.quantity}
+                response = HttpResponse(json.dumps(item_dicts),
+                                        status=200,
+                                        content_type='application/json'
+                                        )
+                return response
+    response = HttpResponse(status=404)
+    return response
+
+
+def refill(request):
+    if request.method == 'POST':
+        from django.core.management import call_command
+        call_command('loaddata', 'fixtures')
+        response = HttpResponse(status=200,
+                                content_type='application/json'
+                                )
+        return response
+    response = HttpResponse(status=404)
+    return response

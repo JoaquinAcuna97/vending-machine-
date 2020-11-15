@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from machines import views, api_urls
+from machines import views, api
 urlpatterns = [
-    path('',  include(api_urls), name='home'),
+    path('',  api.home, name='home'),
+    path('refill', api.refill, name='refill'),
+    path('inventory', api.general_inventory, name='general_inventory'),
+    path('inventory/<int:id>', api.inventory, name='inventory'),
     path('admin/', admin.site.urls),
 ]

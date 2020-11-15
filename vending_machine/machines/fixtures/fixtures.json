@@ -1,0 +1,32 @@
+[
+  {
+    "model": "machines.VendingMachine",
+    "pk": 1,
+    "fields": {
+    }
+  },
+  {
+    "model": "machines.BeverageItem",
+    "pk": 1,
+    "fields": {
+      "name": "Beer",
+      "vending_machine": 1
+    }
+  },
+   {
+    "model": "machines.BeverageItem",
+    "pk": 2,
+    "fields": {
+      "name": "Lemonade",
+      "vending_machine": 1
+    }
+  },
+   {
+    "model": "machines.BeverageItem",
+    "pk": 3,
+    "fields": {
+      "name": "Coffee",
+      "vending_machine": 1
+    }
+  }
+]

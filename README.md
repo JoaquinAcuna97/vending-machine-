@@ -7,6 +7,16 @@
 API Vending Machine looks to use a functional tested beverage vending machine
 for the entire human population.
 
+Its fully developed in Python
+<p align="center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1200px-Python.svg.png" align="right"
+     alt="Among us Vending Machine" width="120" height="178">
+</p> 
+Using Django web framework used for rapid development
+<p align="center">
+<img src="https://cosasdedevs.com/media/sections/images/django_rh1DU90.png" align="right"
+     alt="Among us Vending Machine" width="120" height="178">
+</p>
 
 ## How It Works
 The behavior is defined by a simple contract that you can check:
@@ -29,9 +39,9 @@ inventory
 
 | VERB   | URL            | REQUEST BODY | RESPONSE CODE | RESPONSE HEADERS                                     | RESPONSE BODY         | STATUS      |
 |--------|----------------|--------------|---------------|------------------------------------------------------|-----------------------|-------------|
-| PUT    | /              | {'coin':1}   | 204           | X-Coins: $accepted                                   |                       | In progress |
-| DELETE | /              |              | 204           | X-Coins : $returned                                  |                       | In progress |
-| GET    | /inventory     |              | 200           |                                                      | Array of items        | In progress |
+| PUT    | /              | {'coin':1}   | 204           | X-Coins: $accepted                                   |                       | :heavy_check_mark: |
+| DELETE | /              |              | 204           | X-Coins : $returned                                  |                       | :heavy_check_mark: |
+| GET    | /inventory     |              | 200           |                                                      | Array of items        | :heavy_check_mark: |
 | PUT    | /inventory/:id |              | 200           | X-Coins: $remaining X-Inventory-Remaining: $quantity | {'quantity': $vended} | In progress |
 
 
@@ -86,3 +96,9 @@ Aside from Python, you’ll need:
          ```
     
 ### Deployment
+git clone  https://github.com/JoaquinAcuna97/vending-machine-.git
+cd vending-machine-
+python manage.py makemigrations
+python manage.py migrate
+python manage.py loaddata
+python manage.py runserver 
