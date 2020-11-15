@@ -49,10 +49,11 @@ class VendingMachineAPITestDELETE(TestCase):
         response = self.client.delete('/')
         self.assertEqual(response['X-Coins'], '3')
 
+
 class VendingMachineAPITestRefill(TestCase):
 
     def test_post_refill(self):
-        response = self.client.get('/refill')
+        response = self.client.post('/refill')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['content-type'], 'application/json')
         first_machine = Machine.objects.first()
@@ -77,27 +78,21 @@ class VendingMachineAPITestGETInventory(TestCase):
         self.assertEqual(response['content-type'], 'application/json')
         self.assertEqual(
             json.loads(response.content.decode('utf8')),
-            {[
+            [
                 {
-                    "pk": 1,
-                    "fields": {
-                        "name": "Beer",
-                        "vending_machine": 1
-                    }
+                    "id": 1,
+                    "name": "Beer",
+                    "quantity": 5
                 },
                 {
-                    "pk": 2,
-                    "fields": {
-                        "name": "Lemonade",
-                        "vending_machine": 1
-                    }
+                    "id": 2,
+                    "name": "Lemonade",
+                    "quantity": 5
                 },
                 {
-                    "pk": 3,
-                    "fields": {
-                        "name": "Coffee",
-                        "vending_machine": 1
-                    }
+                    "id": 3,
+                    "name": "Coffee",
+                    "quantity": 5
                 }
-            ]}
+            ]
         )
