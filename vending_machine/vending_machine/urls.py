@@ -18,5 +18,7 @@ from django.urls import path, include
 from machines import views, api_urls
 urlpatterns = [
     path('',  include(api_urls), name='home'),
+    path('inventory',  include(api_urls), name='inventory'),
+    path('refill',  include(api_urls), name='refill'),
     path('admin/', admin.site.urls),
 ]
