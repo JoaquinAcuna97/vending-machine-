@@ -44,8 +44,7 @@ class MachineModelTest(TestCase):
 class ItemModelTest(TestCase):
 
     def test_create_without_name(self):
-        first_item = Item(price=2,
-                          quantity=5)
+        first_item = Item()
         self.assertRaises(ValidationError, first_item.save())
 
     def test_create_item(self):
@@ -69,3 +68,33 @@ class ItemModelTest(TestCase):
         item_saved = Item.objects.get(id=first_item.id)
         self.assertEqual(item_saved.name, 'Beer')
         self.assertEqual(item_saved.quantity, 5)
+
+
+class RelationItemMachine(TestCase):
+
+    def test_add_item_to_a_machine(self):
+        first_machine = Machine()
+        first_machine.save()
+        first_item = Item(name='Beer', vending_machine=first_machine)
+        first_item.save()
+        self.assertEqual(first_item.vending_machine.id, first_machine.id)
+
+    def test_add_two_items_to_a_machine(self):
+        first_machine = Machine()
+        first_machine.save()
+        first_item = Item(name='Beer', vending_machine=first_machine)
+        first_item.save()
+        second_item = Item(name='Hot chocolate', vending_machine=first_machine)
+        second_item.save()
+        self.assertEqual(first_machine.beverageitem_set.count(), 2)
+
+    def test_add_three_items_to_a_machine(self):
+        first_machine = Machine()
+        first_machine.save()
+        first_item = Item(name='Beer', vending_machine=first_machine)
+        first_item.save()
+        second_item = Item(name='Hot chocolate', vending_machine=first_machine)
+        second_item.save()
+        third_item = Item(name='Coffee', vending_machine=first_machine)
+        third_item.save()
+        self.assertEqual(first_machine.beverageitem_set.count(), 3)
