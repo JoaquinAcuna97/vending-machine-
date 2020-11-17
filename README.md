@@ -110,4 +110,7 @@ Aside from Python, you’ll need:
 
 I prefer to put all the test in the tests/ directory, that lives in the project directory to separate them from the code. 
 
+I’ll be using SQLite, a portable database that stores data in a single file by default (www.sqlite.org/index.html).
+This is convenient, compared to more complex database systems, because i can start from scratch by deleting the
+file if something goes wrong.
 ### Design
