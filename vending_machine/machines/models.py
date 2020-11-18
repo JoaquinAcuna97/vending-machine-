@@ -26,6 +26,21 @@ class VendingMachineManager(models.Manager):
             VendingMachine.objects.create()
         return coins_to_return
 
+    def buy_item(self, item_id=None):
+        machine = VendingMachine.objects.first()
+        if machine is not None:
+            if item_id is not None:
+                item = machine.beverageitem_set.get(id=item_id)
+                if machine.coins >= item.price and item.quantity > 0:
+                    item.quantity -= 1
+                    machine.coins -= item.price
+                    machine.save()
+                    item.save()
+                    return True
+        else:
+            VendingMachine.objects.create()
+        return False
+
 
 class VendingMachine(models.Model):
     coins = models.PositiveIntegerField(default=0)
@@ -33,7 +48,7 @@ class VendingMachine(models.Model):
 
 
 class BeverageItem(models.Model):
-    name = models.CharField(max_length=255, blank=False)
+    name = models.CharField(max_length=255, null=False, blank=False)
     quantity = models.PositiveIntegerField(default=5)
     price = models.PositiveIntegerField(default=2)
     vending_machine = models.ForeignKey(VendingMachine,
