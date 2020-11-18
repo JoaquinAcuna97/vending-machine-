@@ -4,8 +4,8 @@
 <img src="https://i.ytimg.com/vi/s4_2odXcjUc/hqdefault.jpg" align="right"
      alt="Among us Vending Machine" width="120" height="178">
 </p>
-API Vending Machine looks to use a functional tested beverage vending machine
-for the entire human population.
+
+API Vending Machines  is (Application Programming Interface) for 3rd-party development and integration of new functionalities, customization and any other applications and use cases for virtually unlimited scalability and expandability. API is commited to keep Code Quality Aspects, Reliability, Maintainability, Testability, Portability, Reusability
 
 
 <p align="left">
@@ -98,9 +98,19 @@ Aside from Python, you’ll need:
          ```
     
 ### Deployment
-git clone  https://github.com/JoaquinAcuna97/vending-machine-.git
-cd vending-machine-
-python manage.py makemigrations
-python manage.py migrate
-python manage.py loaddata
-python manage.py runserver 
+  ```sh
+     git clone  https://github.com/JoaquinAcuna97/vending-machine-.git
+     cd vending-machine-
+     python manage.py makemigrations
+     python manage.py migrate
+     python manage.py loaddata
+     python manage.py runserver 
+```
+### Assumptions
+
+I prefer to put all the test in the tests/ directory, that lives in the project directory to separate them from the code. 
+
+I’ll be using SQLite, a portable database that stores data in a single file by default (www.sqlite.org/index.html).
+This is convenient, compared to more complex database systems, because i can start from scratch by deleting the
+file if something goes wrong.
+### Design
