@@ -11,12 +11,12 @@ class MachineModelTest(TestCase):
         self.assertEqual(machine.coins, 0)
 
     def test_add_one_coin(self):
-        machine = Machine.objects.add_one_coin
+        machine = Machine.objects.add_one_coin()
         self.assertEqual(machine.coins, 1)
 
     def test_add_two_coins(self):
-        Machine.objects.add_one_coin
-        machine = Machine.objects.add_one_coin
+        Machine.objects.add_one_coin()
+        machine = Machine.objects.add_one_coin()
         self.assertEqual(machine.coins, 2)
 
     def test_delete_zero_coin(self):
@@ -26,15 +26,15 @@ class MachineModelTest(TestCase):
         self.assertEqual(coins_returned, 0)
 
     def test_delete_one_coin(self):
-        Machine.objects.add_one_coin
+        Machine.objects.add_one_coin()
         coins_returned = Machine.objects.delete_coins()
         machine = Machine.objects.first()
         self.assertEqual(machine.coins, 0)
         self.assertEqual(coins_returned, 1)
 
     def test_delete_two_coins(self):
-        Machine.objects.add_one_coin
-        Machine.objects.add_one_coin
+        Machine.objects.add_one_coin()
+        Machine.objects.add_one_coin()
         coins_returned = Machine.objects.delete_coins()
         machine = Machine.objects.first()
         self.assertEqual(machine.coins, 0)
