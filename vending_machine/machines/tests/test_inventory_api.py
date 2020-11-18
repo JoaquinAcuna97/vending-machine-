@@ -67,40 +67,40 @@ class TestGETInventoryCertainItem(TestCase):
                 "quantity": 5
             }
         )
-#
-#
-# class TestPUTBuyCertainItem(TestCase):
-#
-#     def test_put_buy_product_succes(self):
-#         self.client.post('/refill')
-#         self.client.put('/')
-#         self.client.put('/')
-#         response = self.client.put('/inventory/2')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertEqual(response['X-Coins'], '0')
-#         self.assertEqual(response['X-Inventory-Remaining'], '4')
-#         self.assertEqual(
-#             json.loads(response.content.decode('utf8')),
-#             {
-#                 "quantity": 1
-#             }
-#         )
-#
-#     def test_put_buy_product_not_created(self):
-#         response = self.client.put('/inventory/2')
-#         self.assertEqual(response.status_code, 404)
-#         self.assertEqual(response['X-Coins'], '0')
-#
-#
-#
-#     def test_put_buy_product_created_insufficient_founds(self):
-#         self.client.post('/refill')
-#         response = self.client.get('/inventory/2')
-#         self.assertEqual(response.status_code, 200)
-#         self.assertEqual(
-#             json.loads(response.content.decode('utf8')),
-#             {
-#                 "name": "Lemonade",
-#                 "quantity": 5
-#             }
-#         )
+
+
+class TestPUTBuyCertainItem(TestCase):
+
+    def test_put_buy_product_succes(self):
+        self.client.post('/refill')
+        self.client.put('/')
+        self.client.put('/')
+        response = self.client.put('/inventory/2')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['X-Coins'], '0')
+        self.assertEqual(response['X-Inventory-Remaining'], '4')
+        self.assertEqual(
+            json.loads(response.content.decode('utf8')),
+            {
+                "quantity": 1
+            }
+        )
+
+    def test_put_buy_product_not_created(self):
+        response = self.client.put('/inventory/2')
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response['X-Coins'], '0')
+
+
+
+    def test_put_buy_product_created_insufficient_founds(self):
+        self.client.post('/refill')
+        response = self.client.get('/inventory/2')
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(
+            json.loads(response.content.decode('utf8')),
+            {
+                "name": "Lemonade",
+                "quantity": 5
+            }
+        )
