@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.db import IntegrityError
 from django.test import TestCase
 from machines.models import VendingMachine as Machine
 from machines.models import BeverageItem as Item
@@ -42,10 +43,6 @@ class MachineModelTest(TestCase):
 
 
 class ItemModelTest(TestCase):
-
-    def test_create_without_name(self):
-        first_item = Item()
-        self.assertRaises(ValidationError, first_item.save())
 
     def test_create_item(self):
         beer = Item(name='Beer')
@@ -107,8 +104,10 @@ class BuyAItem(TestCase):
         machine.save()
         beer = Item(name='Beer', vending_machine=machine)
         beer.save()
-        remaining_items = Machine.objects.buy_item(beer.id)
-        self.assertEqual(remaining_items, 4)
+        Machine.objects.buy_item(beer.id)
+        beer = machine.beverageitem_set.get(id=beer.id)
+        machine = Machine.objects.first()
+        self.assertEqual(beer.quantity, 4)
         self.assertEqual(machine.coins, 0)
 
     def test_buy_one_item_success_one_remaining_coin(self):
@@ -116,8 +115,10 @@ class BuyAItem(TestCase):
         machine.save()
         beer = Item(name='Beer', vending_machine=machine)
         beer.save()
-        remaining_items = Machine.objects.buy_item(beer.id)
-        self.assertEqual(remaining_items, 4)
+        Machine.objects.buy_item(beer.id)
+        beer = machine.beverageitem_set.get(id=beer.id)
+        machine = Machine.objects.first()
+        self.assertEqual(beer.quantity, 4)
         self.assertEqual(machine.coins, 1)
 
     def test_buy_two_times_one_item_success(self):
@@ -126,8 +127,10 @@ class BuyAItem(TestCase):
         beer = Item(name='Beer', vending_machine=machine)
         beer.save()
         Machine.objects.buy_item(beer.id)
-        remaining_items = Machine.objects.buy_item(beer.id)
-        self.assertEqual(remaining_items, 3)
+        Machine.objects.buy_item(beer.id)
+        beer = machine.beverageitem_set.get(id=beer.id)
+        machine = Machine.objects.first()
+        self.assertEqual(beer.quantity, 3)
         self.assertEqual(machine.coins, 0)
 
     def test_buy_two_different_items_success(self):
@@ -138,8 +141,10 @@ class BuyAItem(TestCase):
         lemonade = Item(name='Lemonade', vending_machine=machine)
         lemonade.save()
         Machine.objects.buy_item(beer.id)
-        remaining_items = Machine.objects.buy_item(lemonade.id)
-        self.assertEqual(remaining_items, 4)
+        Machine.objects.buy_item(lemonade.id)
+        lemonade = machine.beverageitem_set.get(id=lemonade.id)
+        machine = Machine.objects.first()
+        self.assertEqual(lemonade.quantity, 4)
         self.assertEqual(machine.coins, 0)
 
 
@@ -148,8 +153,10 @@ class BuyAItem(TestCase):
         machine.save()
         beer = Item(name='Beer', vending_machine=machine, quantity=0)
         beer.save()
-        remaining_items = Machine.objects.buy_item(beer.id)
-        self.assertEqual(remaining_items, 0)
+        Machine.objects.buy_item(beer.id)
+        beer = machine.beverageitem_set.get(id=beer.id)
+        machine = Machine.objects.first()
+        self.assertEqual(beer.quantity, 0)
         self.assertEqual(machine.coins, 4)
 
     def test_buy_item_insufficient_founds(self):
@@ -157,6 +164,8 @@ class BuyAItem(TestCase):
         machine.save()
         beer = Item(name='Beer', vending_machine=machine, price=5)
         beer.save()
-        remaining_items = Machine.objects.buy_item(beer.id)
-        self.assertEqual(remaining_items, 5)
+        Machine.objects.buy_item(beer.id)
+        beer = machine.beverageitem_set.get(id=beer.id)
+        machine = Machine.objects.first()
+        self.assertEqual(beer.quantity, 5)
         self.assertEqual(machine.coins, 4)
