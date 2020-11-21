@@ -1,14 +1,18 @@
 from django.http import HttpResponse
 from machines.models import VendingMachine
 import json
+from machines.models import MachineFactory
 
 
 def add_one_coin():
-    return VendingMachine.objects.add_one_coin()
+    machine_factory = MachineFactory()
+    return machine_factory.add_one_coin('BeverageVendingMachineManager')
 
 
 def delete_coins():
-    return VendingMachine.objects.delete_coins()
+    machine_factory = MachineFactory()
+    coins_returned = machine_factory.delete_coins('BeverageVendingMachineManager')
+    return coins_returned
 
 
 def home(request):
@@ -69,8 +73,9 @@ def inventory(request, item_id=None):
         if machine.beverageitem_set.filter(id=item_id).exists():
             item = machine.beverageitem_set.get(id=item_id)
             if item.quantity > 0 and item.price <= machine.coins:
-                VendingMachine.objects.buy_item(item.pk)
-                response = HttpResponse(json.dumps({"quantity":1}),
+                machine_factory = MachineFactory()
+                machine_factory.buy_item('BeverageVendingMachineManager', item_id=item.pk)
+                response = HttpResponse(json.dumps({"quantity": 1}),
                                         status=200,
                                         content_type='application/json'
                                         )
