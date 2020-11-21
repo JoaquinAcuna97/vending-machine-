@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from machines.models import MachineFactory
+from django.shortcuts import render
 
 
 def add_one_coin():
@@ -15,7 +16,7 @@ def delete_coins():
 
 def home_get(request):
     if request.method == 'GET':
-        return HttpResponse('<html><title>Vending VendingMachine</title></html>')
+        return render(request, 'home.html')
 
 
 def home_put(request):

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Vending Machine</title>
+</head>
+<body>
+<h1 id="api-vending-machine">API Vending Machine</h1>
+<p align="center">
+<img src="https://i.ytimg.com/vi/s4_2odXcjUc/hqdefault.jpg" align="right"
+     alt="Among us Vending Machine" width="300" height="300">
+</p>
+
+<p>API Vending Machines  is (Application Programming Interface) for 3rd-party development and integration of new functionalities, customization and any other applications and use cases for virtually unlimited scalability and expandability. API is commited to keep Code Quality Aspects, Reliability, Maintainability, Testability, Portability, Reusability
+You can see it working on <a href="http://jacuna.pythonanywhere.com/">http://jacuna.pythonanywhere.com/</a></p>
+<p align="left">
+     Its fully developed in Python
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/1200px-Python.svg.png" align="right"
+     alt="python logo" width="100" height="100">
+</p>
+
+<p align="left">
+     Using Django web framework used for rapid development
+<img src="https://cosasdedevs.com/media/sections/images/django_rh1DU90.png" align="right"
+     alt="django logo" width="100" height="100">
+</p>
+
+<h2 id="how-it-works">How It Works</h2>
+<p>The behavior is defined by a simple contract that you can check:</p>
+<p>1) Insert a coin in the vending machine, returning the amount of accepted coins.<br>
+2) Get all the coins back from the vending machine<br>
+3) Get the list of the remaining items and their corresponding quantities.<br>
+4) Get the remaining quantity in stock for a certain item<br>
+5) Buy a certain item from the vending machine returning the amount of coins that<br>
+weren’t used and the amount of remaining items of that :id remaining in the<br>
+inventory</p>
+<pre><code><span class="hljs-keyword">a</span>) If there’s no stock <span class="hljs-keyword">for</span> that <span class="hljs-keyword">item</span> <span class="hljs-keyword">the</span> purchase fails <span class="hljs-keyword">and</span> returns <span class="hljs-keyword">the</span> amount <span class="hljs-keyword">of</span>
+coins that have been entered
+
+b) If <span class="hljs-keyword">the</span> funds are insufficient <span class="hljs-keyword">for</span> purchasing <span class="hljs-keyword">an</span> <span class="hljs-keyword">item</span> <span class="hljs-keyword">the</span> purchase fails <span class="hljs-keyword">and</span>
+returns <span class="hljs-keyword">the</span> amount <span class="hljs-keyword">of</span> coins that have been entered
+</code></pre><p>6) Refill: fills the inventory of the vending machine with 3 beverage producuts, 5 units each</p>
+</body>
+</html>
