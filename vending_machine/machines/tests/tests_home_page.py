@@ -10,8 +10,9 @@ class TestHomePage(TestCase):
         found = resolve('/')
         self.assertEqual(found.func, home)
 
+
     def test_get_returns_json_200(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['content-type'], 'text/html; charset=utf-8')
-
+        self.assertTemplateUsed(response, 'home.html')
