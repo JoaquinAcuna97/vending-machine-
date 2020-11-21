@@ -109,10 +109,38 @@ Aside from Python, you’ll need:
      python manage.py runserver 
 ```
 ### Assumptions
+There will exist only one global vending machine for the entire human population,
+this means that if one user or session, has put 3 coins into a machine, and other
+session makes the purchase in the middle, the user will loose their money. 
+But, this is similar to real world...
 
 I prefer to put all the test in the tests/ directory, that lives in the project directory to separate them from the code. 
 
 I’ll be using SQLite, a portable database that stores data in a single file by default (www.sqlite.org/index.html).
 This is convenient, compared to more complex database systems, because i can start from scratch by deleting the
 file if something goes wrong.
+
 ### Design
+With a focus on optimized software architecture and design,
+i think about optimizations in object creation, code structure,
+ and interaction between objects at the architecture or design level.
+This makes sure that the cost of software maintenance is low, and code can be easily
+reused and is adaptable to change. Moreover, providing  separation of concerns 
+
+I try to use the open/close principle, in a case where a you have to
+create a class implementation by extending the abstract base class to implement the
+required behavior instead of changing the abstract class.
+
+I use Singleton design pattern—one of the simplest
+and well-known Creational design patterns used in application development,
+to be shure that it will be only one instance of vending machines.
+
+For the different kind of machines that can exist, i use a   
+Simple Factory pattern: This allows interfaces to create objects without
+exposing the object creation logic.
+
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/61162180/99867321-60432000-2b97-11eb-8cc9-17e252628350.png" align="center"
+     alt="models diagram" width="120" height="178">
+</p>
