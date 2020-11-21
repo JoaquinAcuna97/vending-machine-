@@ -6,7 +6,7 @@
 </p>
 
 API Vending Machines  is (Application Programming Interface) for 3rd-party development and integration of new functionalities, customization and any other applications and use cases for virtually unlimited scalability and expandability. API is commited to keep Code Quality Aspects, Reliability, Maintainability, Testability, Portability, Reusability
-
+You can see it working on http://jacuna.pythonanywhere.com/
 
 <p align="left">
      Its fully developed in Python
@@ -125,7 +125,7 @@ With a focus on optimized software architecture and design,
 i think about optimizations in object creation, code structure,
  and interaction between objects at the architecture or design level.
 This makes sure that the cost of software maintenance is low, and code can be easily
-reused and is adaptable to change. Moreover, providing  separation of concerns 
+reused and is adaptable to change.
 
 I try to use the open/close principle, in a case where you have to
 create a class implementation, doit by extending the abstract base class to implement the
