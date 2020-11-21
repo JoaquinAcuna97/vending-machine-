@@ -94,6 +94,7 @@ def inventory(request, id=None):
     response['X-Coins'] = 0 #machine does not exist
     return response
 
+
 def refill(request):
     if request.method == 'POST':
         from django.core.management import call_command
