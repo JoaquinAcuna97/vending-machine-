@@ -1,16 +1,32 @@
 from django.db import models
+from abc import ABCMeta, abstractmethod
 
 
 # Create your models here.
 
+class MachineManager(models.Manager):
+    class Meta:
+        abstract = True
 
-class VendingMachineManager(models.Manager):
+    @abstractmethod
+    def add_one_coin(self):
+        pass
+
+    @abstractmethod
+    def delete_coins(self):
+        pass
+
+    @abstractmethod
+    def buy_item(self, item_id=None):
+        pass
+
+
+class BeverageVendingMachineManager(MachineManager):
 
     def add_one_coin(self):
         machine = VendingMachine.load()
         machine.coins += 1
         machine.save()
-
         return machine
 
     def delete_coins(self):
@@ -62,7 +78,7 @@ class SingletonModel(models.Model):
 
 class VendingMachine(SingletonModel):
     coins = models.PositiveIntegerField(default=0)
-    objects = VendingMachineManager()
+    objects = BeverageVendingMachineManager()
 
 
 class BeverageItem(models.Model):
@@ -72,3 +88,28 @@ class BeverageItem(models.Model):
     vending_machine = models.ForeignKey(VendingMachine,
                                         on_delete=models.CASCADE,
                                         null=True)
+
+
+class AnotherVendingMachineManager(MachineManager):
+
+    def add_one_coin(self):
+        pass
+
+    def delete_coins(self):
+        pass
+
+    def buy_item(self, item_id=None):
+        pass
+
+
+## Machine factory defined
+class MachineFactory(object):
+
+    def add_one_coin(self, object_type):
+        return eval(object_type)().add_one_coin()
+
+    def delete_coins(self, object_type):
+        return eval(object_type)().delete_coins()
+
+    def buy_item(self, object_type, item_id=None):
+        return eval(object_type)().buy_item(item_id)
