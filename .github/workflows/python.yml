@@ -26,4 +26,4 @@ jobs:
         if [ -f vending_machine/requirements.txt ]; then pip install -r vending_machine/requirements.txt; fi
     - name: Test 
       run: |
-        python vending_machine/manage.py test
+        python manage.py test
