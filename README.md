@@ -36,15 +36,17 @@ inventory
     
     b) If the funds are insufficient for purchasing an item the purchase fails and
     returns the amount of coins that have been entered 
-
+6) Refill: fills the inventory of the vending machine with 3 beverage producuts, 5 units each
 ## Usage
 
 | VERB   | URL            | REQUEST BODY | RESPONSE CODE | RESPONSE HEADERS                                     | RESPONSE BODY         | STATUS      |
 |--------|----------------|--------------|---------------|------------------------------------------------------|-----------------------|-------------|
+| GET    | /              |              | 200           |                                                      | Main page html        | :heavy_check_mark: |
 | PUT    | /              | {'coin':1}   | 204           | X-Coins: $accepted                                   |                       | :heavy_check_mark: |
 | DELETE | /              |              | 204           | X-Coins : $returned                                  |                       | :heavy_check_mark: |
+| POST   | /refill        |              | 200           |                                                      |                       | :heavy_check_mark: |
 | GET    | /inventory     |              | 200           |                                                      | Array of items        | :heavy_check_mark: |
-| PUT    | /inventory/:id |              | 200           | X-Coins: $remaining X-Inventory-Remaining: $quantity | {'quantity': $vended} | In progress |
+| PUT    | /inventory/:id |              | 200           | X-Coins: $remaining X-Inventory-Remaining: $quantity | {'quantity': $vended} | :heavy_check_mark: |
 
 
 ### Required Software Installations
