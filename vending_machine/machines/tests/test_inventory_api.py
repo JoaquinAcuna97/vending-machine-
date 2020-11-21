@@ -8,7 +8,7 @@ class TestRefill(TestCase):
         response = self.client.post('/refill')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['content-type'], 'application/json')
-        first_machine = Machine.objects.first()
+        first_machine = Machine.load()
         self.assertEqual(first_machine.beverageitem_set.count(), 3)
 
 
@@ -20,7 +20,7 @@ class TestGETInventory(TestCase):
         self.assertEqual(response['content-type'], 'application/json')
         self.assertEqual(
             json.loads(response.content.decode('utf8')),
-            {}
+            []
         )
 
     def test_get_full_inventory(self):

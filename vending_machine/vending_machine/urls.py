@@ -20,6 +20,6 @@ urlpatterns = [
     path('',  api.home, name='home'),
     path('refill', api.refill, name='refill'),
     path('inventory', api.general_inventory, name='general_inventory'),
-    path('inventory/<int:id>', api.inventory, name='inventory'),
+    path('inventory/<int:item_id>', api.inventory, name='inventory'),
     path('admin/', admin.site.urls),
 ]

@@ -7,7 +7,7 @@ from machines.models import BeverageItem as Item
 class MachineModelTest(TestCase):
 
     def test_saving_and_zero_coins_first(self):
-        machine = Machine()
+        machine = Machine.load()
         machine.save()
         self.assertEqual(machine.coins, 0)
 
@@ -21,7 +21,7 @@ class MachineModelTest(TestCase):
         self.assertEqual(machine.coins, 2)
 
     def test_delete_zero_coin(self):
-        machine = Machine.objects.create()
+        machine = Machine.load()
         coins_returned = Machine.objects.delete_coins()
         self.assertEqual(machine.coins, 0)
         self.assertEqual(coins_returned, 0)
@@ -29,7 +29,7 @@ class MachineModelTest(TestCase):
     def test_delete_one_coin(self):
         Machine.objects.add_one_coin()
         coins_returned = Machine.objects.delete_coins()
-        machine = Machine.objects.first()
+        machine = Machine.load()
         self.assertEqual(machine.coins, 0)
         self.assertEqual(coins_returned, 1)
 
@@ -37,7 +37,7 @@ class MachineModelTest(TestCase):
         Machine.objects.add_one_coin()
         Machine.objects.add_one_coin()
         coins_returned = Machine.objects.delete_coins()
-        machine = Machine.objects.first()
+        machine = Machine.load()
         self.assertEqual(machine.coins, 0)
         self.assertEqual(coins_returned, 2)
 
@@ -70,14 +70,14 @@ class ItemModelTest(TestCase):
 class RelationItemMachine(TestCase):
 
     def test_add_item_to_a_machine(self):
-        machine = Machine()
+        machine = Machine.load()
         machine.save()
         beer = Item(name='Beer', vending_machine=machine)
         beer.save()
         self.assertEqual(beer.vending_machine.id, machine.id)
 
     def test_add_two_items_to_a_machine(self):
-        first_machine = Machine()
+        first_machine = Machine.load()
         first_machine.save()
         beer = Item(name='Beer', vending_machine=first_machine)
         beer.save()
@@ -86,7 +86,7 @@ class RelationItemMachine(TestCase):
         self.assertEqual(first_machine.beverageitem_set.count(), 2)
 
     def test_add_three_items_to_a_machine(self):
-        machine = Machine()
+        machine = Machine.load()
         machine.save()
         beer = Item(name='Beer', vending_machine=machine)
         beer.save()
@@ -100,41 +100,45 @@ class RelationItemMachine(TestCase):
 class BuyAItem(TestCase):
 
     def test_buy_one_item_success_no_remaining_coins(self):
-        machine = Machine(coins=2)
+        machine = Machine.load()
+        machine.coins = 2
         machine.save()
         beer = Item(name='Beer', vending_machine=machine)
         beer.save()
         Machine.objects.buy_item(beer.id)
-        beer = machine.beverageitem_set.get(id=beer.id)
-        machine = Machine.objects.first()
+        beer.refresh_from_db()
+        machine = Machine.load()
         self.assertEqual(beer.quantity, 4)
         self.assertEqual(machine.coins, 0)
 
     def test_buy_one_item_success_one_remaining_coin(self):
-        machine = Machine(coins=3)
+        machine = Machine.load()
+        machine.coins = 3
         machine.save()
         beer = Item(name='Beer', vending_machine=machine)
         beer.save()
         Machine.objects.buy_item(beer.id)
-        beer = machine.beverageitem_set.get(id=beer.id)
-        machine = Machine.objects.first()
+        beer.refresh_from_db()
+        machine = Machine.load()
         self.assertEqual(beer.quantity, 4)
         self.assertEqual(machine.coins, 1)
 
     def test_buy_two_times_one_item_success(self):
-        machine = Machine(coins=4)
+        machine = Machine.load()
+        machine.coins = 4
         machine.save()
         beer = Item(name='Beer', vending_machine=machine)
         beer.save()
         Machine.objects.buy_item(beer.id)
         Machine.objects.buy_item(beer.id)
-        beer = machine.beverageitem_set.get(id=beer.id)
-        machine = Machine.objects.first()
+        beer.refresh_from_db()
+        machine = Machine.load()
         self.assertEqual(beer.quantity, 3)
         self.assertEqual(machine.coins, 0)
 
     def test_buy_two_different_items_success(self):
-        machine = Machine(coins=4)
+        machine = Machine.load()
+        machine.coins = 4
         machine.save()
         beer = Item(name='Beer', vending_machine=machine)
         beer.save()
@@ -142,30 +146,32 @@ class BuyAItem(TestCase):
         lemonade.save()
         Machine.objects.buy_item(beer.id)
         Machine.objects.buy_item(lemonade.id)
-        lemonade = machine.beverageitem_set.get(id=lemonade.id)
-        machine = Machine.objects.first()
+        lemonade.refresh_from_db()
+        machine = Machine.load()
         self.assertEqual(lemonade.quantity, 4)
         self.assertEqual(machine.coins, 0)
 
 
     def test_buy_item_no_stock(self):
-        machine = Machine(coins=4)
+        machine = Machine.load()
+        machine.coins = 4
         machine.save()
         beer = Item(name='Beer', vending_machine=machine, quantity=0)
         beer.save()
         Machine.objects.buy_item(beer.id)
-        beer = machine.beverageitem_set.get(id=beer.id)
-        machine = Machine.objects.first()
+        beer.refresh_from_db()
+        machine = Machine.load()
         self.assertEqual(beer.quantity, 0)
         self.assertEqual(machine.coins, 4)
 
     def test_buy_item_insufficient_founds(self):
-        machine = Machine(coins=4)
+        machine = Machine.load()
+        machine.coins = 4
         machine.save()
         beer = Item(name='Beer', vending_machine=machine, price=5)
         beer.save()
         Machine.objects.buy_item(beer.id)
-        beer = machine.beverageitem_set.get(id=beer.id)
-        machine = Machine.objects.first()
+        beer.refresh_from_db()
+        machine = Machine.load()
         self.assertEqual(beer.quantity, 5)
         self.assertEqual(machine.coins, 4)
